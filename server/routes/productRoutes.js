@@ -18,9 +18,9 @@ productRoute.get("/products", async (req, res) => {
     // Execute Query
     let myFields = { ...req.query };
     // const selected = myFields.fields.split(",").join(" ");
-    // const selected = myFields.fields.replace(",", " ");
+    const selected = myFields.fields.replace(",", " ");
     // console.log("myselection", selected);
-    const data = await Product.find(newQueryObj);
+    const data = await Product.find(newQueryObj).select(selected);
     // .select(selected)
     res.status(200).json({
       status: "Success",
