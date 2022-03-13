@@ -6,16 +6,22 @@ productRoute.get("/products", async (req, res) => {
   try {
     // Filtering
     const queryObj = { ...req.query };
+    // console.log(req.query);
     const excludedFields = ["page", "sort", "limit", "fields"];
     excludedFields.forEach((field) => delete queryObj[field]);
     const queryString = JSON.stringify(queryObj).replace(
       /\b(gte|gt|lte|lt)\b/g,
       (match) => `$${match}`
     );
-    const newQueryObj = JSON.parse(queryString);
+    let newQueryObj = JSON.parse(queryString);
 
     // Execute Query
+    let myFields = { ...req.query };
+    // const selected = myFields.fields.split(",").join(" ");
+    // const selected = myFields.fields.replace(",", " ");
+    // console.log("myselection", selected);
     const data = await Product.find(newQueryObj);
+    // .select(selected)
     res.status(200).json({
       status: "Success",
       count: data.length,
