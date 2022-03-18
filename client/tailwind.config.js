@@ -3,6 +3,12 @@ module.exports = {
   important: "#root",
   theme: {
     extend: {},
+    colors: {
+      primary: "#e32e00",
+      secondary: "#464955",
+      primary_light: "#ff4400",
+      secondary_light: "#858aa1",
+    },
   },
   plugins: [],
 };

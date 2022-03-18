@@ -5,7 +5,7 @@ import HeaderContainer from "./containers/HeaderContainer";
 const App = () => {
   return (
     <>
-      <HeaderContainer children={<Header />} />;
+      <HeaderContainer children={<Header />} />
     </>
   );
 };
