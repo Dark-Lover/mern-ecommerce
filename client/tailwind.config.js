@@ -8,6 +8,7 @@ module.exports = {
       secondary: "#464955",
       primary_light: "#ff4400",
       secondary_light: "#858aa1",
+      transparent: "transparent",
     },
   },
   plugins: [],
