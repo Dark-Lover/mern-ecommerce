@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
 //prettier-ignore
 import {
-  Box,Typography,TextField,InputAdornment,Tooltip,Menu,MenuItem,MenuList,Link
+  Box,Typography,TextField,InputAdornment,Tooltip,Menu,MenuItem,MenuList
 } from "@mui/material";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -22,11 +23,12 @@ const Header = () => {
         component="h1"
         className="text-primary uppercase font-bold border-2 px-2 tracking-wide"
       >
-        Localy.
+        <NavLink to={"/"}>Localy.</NavLink>
       </Typography>
+
       <Box className="flex justify-around w-full px-3 md:w-12/12 md:justify-end">
         <TextField
-          className="flex-initial w-8/12 md:w-6/12 md:ml-5"
+          className="flex-initial w-8/12 md:w-4/12 md:ml-5"
           id="input-with-icon-textfield"
           hiddenLabel
           placeholder="Search .."
@@ -39,9 +41,11 @@ const Header = () => {
           }}
           variant="standard"
         />
-        <Box className="flex flex-initial w-4/12  justify-around items-center md:w-6/12">
-          <Box className="flex w-8/12 md:w-3/12 justify-around">
-            <LocalMallOutlinedIcon className="cursor-pointer " />
+        <Box className="flex flex-initial w-4/12  justify-around items-center md:w-8/12">
+          <Box className="flex w-8/12 md:w-2/12 justify-around items-center">
+            <NavLink to={"/cart"}>
+              <LocalMallOutlinedIcon className="cursor-pointer " />
+            </NavLink>
             <AccountCircleOutlinedIcon className="cursor-pointer " />
           </Box>
           <Box className="md:hidden">
@@ -65,25 +69,65 @@ const Header = () => {
                   width: "12rem",
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <NavLink to="/details">
+                  <MenuItem onClick={handleClose}>Electronics</MenuItem>
+                </NavLink>
+                <NavLink to="/details">
+                  <MenuItem onClick={handleClose}>Jewelery</MenuItem>
+                </NavLink>
+                <NavLink to="/details">
+                  <MenuItem onClick={handleClose}>Men's clothing</MenuItem>
+                </NavLink>
+                <NavLink to="/details">
+                  <MenuItem onClick={handleClose}>Women's clothing</MenuItem>
+                </NavLink>
               </MenuList>
             </Menu>
           </Box>
           <Box
-            className="hidden md:flex md:w-9/12  md:px-4 justify-around"
+            className="hidden md:flex md:w-10/12  md:px-4 justify-around"
             sx={{ fontFamily: "Roboto" }}
           >
-            <Link href="#" className="no-underline text-secondary">
+            <NavLink
+              to={"details/electronics"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2"
+                  : "no-underline text-secondary border-b-2 border-transparent  "
+              }
+            >
+              Electronics
+            </NavLink>
+            <NavLink
+              to={"details/jewelery"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2"
+                  : "no-underline text-secondary"
+              }
+            >
+              Jewelery
+            </NavLink>
+            <NavLink
+              to={"details/mens"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2"
+                  : "no-underline text-secondary"
+              }
+            >
               Men's
-            </Link>
-            <Link href="#" className="no-underline text-secondary">
+            </NavLink>
+            <NavLink
+              to={"details/women"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2"
+                  : "no-underline text-secondary"
+              }
+            >
               Women's
-            </Link>
-            <Link href="#" className="no-underline text-secondary">
-              Kid's
-            </Link>
+            </NavLink>
           </Box>
         </Box>
       </Box>
