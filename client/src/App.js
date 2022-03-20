@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Details from "./pages/details/Details";
 import Cart from "./pages/cart/Cart";
+import HeroSection from "./components/hero/HeroSection";
+import Categories from "./components/categories/Categories";
 const App = () => {
   return (
     <>
@@ -13,6 +15,8 @@ const App = () => {
         <HeaderContainer>
           <Header />
         </HeaderContainer>
+        <HeroSection />
+        <Categories />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/details" element={<Details />}>
