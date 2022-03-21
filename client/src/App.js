@@ -8,6 +8,7 @@ import Details from "./pages/details/Details";
 import Cart from "./pages/cart/Cart";
 import HeroSection from "./components/hero/HeroSection";
 import Categories from "./components/categories/Categories";
+import ProductList from "./components/productList/ProductList";
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
         </HeaderContainer>
         <HeroSection />
         <Categories />
+        <ProductList />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/details" element={<Details />}>

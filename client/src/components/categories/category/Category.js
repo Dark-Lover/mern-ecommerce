@@ -6,7 +6,7 @@ const Category = () => {
     <Card sx={{ minWidth: 200, maxWidth: 250 }}>
       <CardMedia component="img" height="140" image={hero} alt="green iguana" />
       <CardContent className="text-center">
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           Lizard
         </Typography>
         <Typography variant="body2" color="text.secondary">

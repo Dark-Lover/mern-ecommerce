@@ -3,3 +3,9 @@
   color: #e32e00;
   font-weight: bold;
 }
+.swiper-button-next {
+  margin-right: -0.5rem;
+}
+.swiper-button-prev {
+  margin-left: -0.5rem;
+}
