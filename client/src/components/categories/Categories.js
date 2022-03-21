@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 //prettier-ignore
 import {
-   Container
+   Container, Typography
 } from "@mui/material";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,12 +25,19 @@ const Categories = () => {
   const upToMd = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
-    <Container>
+    <Container className="mt-12">
+      <Typography
+        variant="h6"
+        component="h2"
+        className="text-center text-primary mb-4"
+      >
+        Our Categories
+      </Typography>
       <Swiper
         // install Swiper modules
-        className="max-w-4xl p-2"
+        className="max-w-4xl p-2 "
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={0}
+        spaceBetween={2}
         slidesPerView={downToSm ? 1 : upToMd ? 3 : 2}
         navigation
         onSwiper={(swiper) => console.log(swiper)}
