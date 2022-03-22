@@ -9,6 +9,8 @@ import Cart from "./pages/cart/Cart";
 import HeroSection from "./components/hero/HeroSection";
 import Categories from "./components/categories/Categories";
 import ProductList from "./components/productList/ProductList";
+import FooterContainer from "./containers/FooterContainer";
+import FooterSection from "./components/footer/Footer";
 const App = () => {
   return (
     <>
@@ -19,6 +21,7 @@ const App = () => {
         <HeroSection />
         <Categories />
         <ProductList />
+        <FooterSection />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/details" element={<Details />}>
