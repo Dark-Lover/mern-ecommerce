@@ -5,8 +5,9 @@ import {
 } from "@mui/material";
 
 const FooterSection = () => {
-  const [currency, setCurrency] = useState("Morrocco (dh)");
+  const [currency, setCurrency] = useState("Dollar ($)");
   const [language, setLanguage] = useState("English");
+
   const handleCurrency = (event) => {
     setCurrency(event.target.value);
   };
@@ -28,7 +29,7 @@ const FooterSection = () => {
                 id="language-select"
                 value={language}
                 label="Language"
-                onChange={handleCurrency}
+                onChange={handleLanguage}
                 size="small"
               >
                 {languages.map((language) => (
@@ -48,8 +49,8 @@ const FooterSection = () => {
                 labelId="currency-select-label"
                 id="currency-select"
                 value={currency}
-                label="Language"
-                onChange={handleLanguage}
+                label="Currency"
+                onChange={handleCurrency}
                 size="small"
               >
                 {currencies.map((currency) => (
