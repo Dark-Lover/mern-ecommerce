@@ -34,16 +34,16 @@ const Navbar = () => {
               width: "12rem",
             }}
           >
-            <NavLink to="/details/electronics">
+            <NavLink to="/electronics">
               <MenuItem onClick={handleClose}>Electronics</MenuItem>
             </NavLink>
-            <NavLink to="/details/jewelery">
+            <NavLink to="/jewelery">
               <MenuItem onClick={handleClose}>Jewelery</MenuItem>
             </NavLink>
-            <NavLink to="/details/men">
+            <NavLink to="/men">
               <MenuItem onClick={handleClose}>Men's clothing</MenuItem>
             </NavLink>
-            <NavLink to="/details/women">
+            <NavLink to="/women">
               <MenuItem onClick={handleClose}>Women's clothing</MenuItem>
             </NavLink>
           </MenuList>
@@ -55,7 +55,7 @@ const Navbar = () => {
         sx={{ fontFamily: "Roboto" }}
       >
         <NavLink
-          to={"details/electronics"}
+          to={"/electronics"}
           className={({ isActive }) =>
             isActive
               ? "text-primary border-b-2"
@@ -65,7 +65,7 @@ const Navbar = () => {
           Electronics
         </NavLink>
         <NavLink
-          to={"details/jewelery"}
+          to={"/jewelery"}
           className={({ isActive }) =>
             isActive ? "text-primary border-b-2" : "no-underline text-secondary"
           }
@@ -73,7 +73,7 @@ const Navbar = () => {
           Jewelery
         </NavLink>
         <NavLink
-          to={"details/mens"}
+          to={"/men"}
           className={({ isActive }) =>
             isActive ? "text-primary border-b-2" : "no-underline text-secondary"
           }
@@ -81,7 +81,7 @@ const Navbar = () => {
           Men's
         </NavLink>
         <NavLink
-          to={"details/women"}
+          to={"/women"}
           className={({ isActive }) =>
             isActive ? "text-primary border-b-2" : "no-underline text-secondary"
           }

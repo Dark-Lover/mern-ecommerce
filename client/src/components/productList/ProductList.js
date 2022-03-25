@@ -5,16 +5,16 @@ import {
 } from "@mui/material";
 import ProductCard from "./productCard/ProductCard";
 
-const ProductList = () => {
+const ProductList = ({ cat }) => {
   return (
     <section className="py-12 px-4 ">
       <Container>
         <Typography
           variant="h6"
           component="h2"
-          className="text-center text-primary mb-4"
+          className="text-center text-primary mb-4 capitalize"
         >
-          Best Sellers
+          {cat ? `${cat} Articles` : "Best Sellers"}
         </Typography>
         <Grid container spacing={2} className="justify-center">
           <ProductCard />
