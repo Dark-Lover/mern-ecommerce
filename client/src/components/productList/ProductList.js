@@ -4,8 +4,11 @@ import {
   Container,Typography,Grid
 } from "@mui/material";
 import ProductCard from "./productCard/ProductCard";
+import { useSelector } from "react-redux";
 
 const ProductList = ({ cat }) => {
+  const { catData } = useSelector((state) => state.products);
+  console.log("Here is the cat data: ", catData);
   return (
     <section className="py-12 px-4 ">
       <Container>
@@ -17,10 +20,13 @@ const ProductList = ({ cat }) => {
           {cat ? `${cat} Articles` : "Best Sellers"}
         </Typography>
         <Grid container spacing={2} className="justify-center">
+          {catData.length !== 0
+            ? catData.map((prod) => <ProductCard prod={prod} key={prod._id} />)
+            : "Loading"}
+
+          {/* <ProductCard />
           <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard /> */}
         </Grid>
       </Container>
     </section>
