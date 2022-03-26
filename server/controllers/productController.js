@@ -12,6 +12,32 @@ exports.aliasCheapestFive = async (req, res, next) => {
   next();
 };
 
+exports.specifyCategory = async (req, res, next) => {
+  let { cat } = req.params;
+  console.log("Origin Cat: ", cat);
+
+  switch (cat) {
+    case "men":
+      cat = "men's clothing";
+      break;
+    case "women":
+      cat = "women's clothing";
+      break;
+    case "electronics":
+      cat = "electronics";
+      break;
+    case "jewelery":
+      cat = "jewelery";
+      break;
+    // default:
+    //   cat = "men's clothing";
+    //   break;
+  }
+  console.log("New Cat: ", cat);
+  req.query = { category: cat };
+  next();
+};
+
 exports.getAllProducts = async (req, res) => {
   try {
     //! Using APIFeatures

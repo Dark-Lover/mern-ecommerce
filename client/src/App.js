@@ -16,7 +16,7 @@ const App = () => {
     if (needFetch) {
       getAllProductsAPI()
         .then((res) => {
-          console.log("we are fetching again");
+          console.log("we are fetching");
           dispatch(FETCH_ALL_PRODUCTS(res));
           dispatch(TURNOFF());
         })

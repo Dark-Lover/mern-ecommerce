@@ -3,6 +3,11 @@ const productsCtr = require("./../controllers/productController");
 
 // Get All Products
 productRoute.get("/products", productsCtr.getAllProducts);
+productRoute.get(
+  "/products/:cat",
+  productsCtr.specifyCategory,
+  productsCtr.getAllProducts
+);
 
 // Create Product
 productRoute.post("/products", productsCtr.addProduct);

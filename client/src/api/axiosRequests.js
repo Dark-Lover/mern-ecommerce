@@ -12,3 +12,12 @@ export const getAllProductsAPI = async () => {
     throw err;
   }
 };
+
+export const getCatProductsAPI = async (cat) => {
+  try {
+    const products = await instance.get(`/${cat}`);
+    return products.data.products;
+  } catch (err) {
+    throw err;
+  }
+};

@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const anchorRef = useRef(null);
-  console.log(anchorRef);
   const handleClose = () => {
     setOpenMenu(!openMenu);
   };
