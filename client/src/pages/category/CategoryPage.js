@@ -6,8 +6,8 @@ import ProductList from "../../components/productList/ProductList";
 import HeaderContainer from "../../containers/HeaderContainer";
 import { getCatProductsAPI } from "../../api/axiosRequests";
 import { useDispatch, useSelector } from "react-redux";
-import { FETCH_CAT_PRODUCTS, TURNOFFCAT } from "./../../api/productsFeatures";
-const Details = () => {
+import { FETCH_CAT_PRODUCTS, TURNOFFCAT } from "../../api/productsFeatures";
+const CategoryPage = () => {
   const category = useParams();
   const { catData } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -30,4 +30,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default CategoryPage;

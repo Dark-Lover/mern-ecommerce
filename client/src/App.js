@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Main from "./containers/Main";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Details from "./pages/details/Details";
+import CategoryPage from "./pages/category/CategoryPage";
 import Cart from "./pages/cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { FETCH_ALL_PRODUCTS, TURNOFF } from "./api/productsFeatures";
@@ -42,7 +42,7 @@ const App = () => {
         </Button>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path=":category" element={<Details />} />
+          <Route path=":category" element={<CategoryPage />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Main>
