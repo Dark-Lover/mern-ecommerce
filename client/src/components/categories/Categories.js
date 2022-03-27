@@ -1,6 +1,6 @@
 import React from "react";
 import Category from "./category/Category";
-
+import { useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 //prettier-ignore
@@ -23,7 +23,10 @@ const Categories = () => {
   const theme = useTheme();
   const downToSm = useMediaQuery(theme.breakpoints.down("sm"));
   const upToMd = useMediaQuery(theme.breakpoints.up("md"));
-
+  const { data } = useSelector((state) => state.products);
+  const uniqueCat = new Set(data.map((el) => el.category));
+  const catArr = [...uniqueCat];
+  console.log(catArr);
   return (
     <Container className="mt-12">
       <Typography
@@ -43,21 +46,13 @@ const Categories = () => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide className="flex justify-center">
-          <Category />
-        </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <Category />
-        </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <Category />
-        </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <Category />
-        </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <Category />
-        </SwiperSlide>
+        {catArr.length !== 0
+          ? catArr.map((el) => (
+              <SwiperSlide className="flex justify-center" key={el}>
+                <Category cat={el} />
+              </SwiperSlide>
+            ))
+          : "Loading"}
       </Swiper>
     </Container>
   );
