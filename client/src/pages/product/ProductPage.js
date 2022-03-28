@@ -12,16 +12,16 @@ const ProductPage = () => {
   };
   console.log("Qty state is: ", qty);
   return (
-    <Container className="py-8">
+    <Container className="py-8 ">
       <Grid container>
-        <Grid item>
+        <Grid item className="bg-primary w-full">
           <img
             src={hero}
             alt="product"
-            className="h-full w-full object-cover rounded-xl"
+            className="h-full max-h-80 w-full object-cover rounded-xl"
           />
         </Grid>
-        <Grid item className="w-full">
+        <Grid item className="w-full pt-2">
           <Typography variant="h6" component="h1" align="center" gutterBottom>
             Swiss Made Vegetable Cutting Knife
           </Typography>
@@ -36,24 +36,27 @@ const ProductPage = () => {
             consectetur adipisicing elit. Modi praesentium laborum itaque
             temporibus consectetur asperiores.
           </Typography>
-          <Box className="flex mb-4">
-            <Box className="w-20 h-14 grow-0 border-2 border-secondary_light rounded-lg flex items-center justify-center ">
-              $ <span className="font-bold "> 25</span>
+          <Box className="flex my-4">
+            <Box className="w-20 h-10 grow-0  bg-bgTest rounded-lg flex items-center justify-center text-neutral-500">
+              $ <span className=" font-bold text-textTest "> 25</span>
             </Box>
-            <Box className="w-full flex items-center ml-4">Save 12%</Box>
+            <Box className="w-full flex items-center ml-4 font-bold text-green-500">
+              <span className="text-textGreen">Save 12%</span>
+            </Box>
           </Box>
         </Grid>
         <Grid item className="flex gap-4 ">
-          <Box sx={{ minWidth: 100, maxWidth: 100 }}>
+          <Box sx={{ minWidth: 60, maxWidth: 100 }}>
             <FormControl fullWidth>
-              <InputLabel id="qty-select-label">Quantity</InputLabel>
+              <InputLabel id="qty-select-label">QTY</InputLabel>
               <Select
                 labelId="qty-select-label"
                 id="qty-select"
                 value={qty}
-                label="Quantity"
+                label="QTY"
                 onChange={handleChange}
                 size="small"
+                className="font-bold text-textTest"
               >
                 <MenuItem value={1}>1</MenuItem>
                 <MenuItem value={1}>2</MenuItem>
@@ -61,7 +64,7 @@ const ProductPage = () => {
               </Select>
             </FormControl>
           </Box>
-          <Button variant="contained" className="capitalize">
+          <Button variant="contained" className="capitalize bg-textTest">
             Add to Cart
           </Button>
         </Grid>
