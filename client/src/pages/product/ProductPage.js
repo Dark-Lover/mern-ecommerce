@@ -12,16 +12,18 @@ const ProductPage = () => {
   };
   console.log("Qty state is: ", qty);
   return (
-    <Container className="py-8 ">
-      <Grid container>
-        <Grid item className="bg-primary w-full">
+    <Container className="py-8 flex justify-center ">
+      <Grid container className=" max-w-5xl">
+        {/* Image  */}
+        <Grid item sx={12} sm={6} className=" w-full">
           <img
             src={hero}
             alt="product"
             className="h-full max-h-80 w-full object-cover rounded-xl"
           />
         </Grid>
-        <Grid item className="w-full pt-2">
+        {/* Product Info  */}
+        <Grid item sx={12} sm={6} className="w-full pt-2  px-4">
           <Typography variant="h6" component="h1" align="center" gutterBottom>
             Swiss Made Vegetable Cutting Knife
           </Typography>
@@ -44,29 +46,29 @@ const ProductPage = () => {
               <span className="text-textGreen">Save 12%</span>
             </Box>
           </Box>
-        </Grid>
-        <Grid item className="flex gap-4 ">
-          <Box sx={{ minWidth: 60, maxWidth: 100 }}>
-            <FormControl fullWidth>
-              <InputLabel id="qty-select-label">QTY</InputLabel>
-              <Select
-                labelId="qty-select-label"
-                id="qty-select"
-                value={qty}
-                label="QTY"
-                onChange={handleChange}
-                size="small"
-                className="font-bold text-textTest"
-              >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={1}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Button variant="contained" className="capitalize bg-textTest">
-            Add to Cart
-          </Button>
+          <Grid item sx={12} className="flex gap-4 ">
+            <Box sx={{ minWidth: 60, maxWidth: 100 }}>
+              <FormControl fullWidth>
+                <InputLabel id="qty-select-label">QTY</InputLabel>
+                <Select
+                  labelId="qty-select-label"
+                  id="qty-select"
+                  value={qty}
+                  label="QTY"
+                  onChange={handleChange}
+                  size="small"
+                  className="font-bold text-textTest"
+                >
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={1}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Button variant="contained" className="capitalize bg-textTest">
+              Add to Cart
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
