@@ -18,7 +18,7 @@ const FooterSection = () => {
   const languages = ["English", "French", "Arabic"];
 
   return (
-    <footer className="bg-light_gray py-8 px-8 ">
+    <footer className="bg-light_gray py-8 px-8   ">
       <Grid container className="gap-4 justify-center">
         <Grid item>
           <Box sx={{ minWidth: 120 }}>

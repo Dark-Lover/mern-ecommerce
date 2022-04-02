@@ -8,7 +8,7 @@ exports.aliasCheapestFive = async (req, res, next) => {
   console.log(req.query);
   // req.query.fields = "title,price";
   // req.query.price = { lte: 60 };
-  req.query = { fields: "title,price", page: 1, limit: 5, sort: "price" };
+  req.query = { page: 1, limit: 5, sort: "price" };
   next();
 };
 
