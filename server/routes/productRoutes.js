@@ -20,7 +20,7 @@ productRoute.patch("/products/:id", productsCtr.updateProduct);
 
 // Custom
 productRoute.get(
-  "/products/cheapest-five",
+  "/products/custom/cheapest-five",
   productsCtr.aliasCheapestFive,
   productsCtr.getAllProducts
 );

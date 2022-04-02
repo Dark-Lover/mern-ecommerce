@@ -5,7 +5,6 @@ import Header from "../../components/header/Header";
 import HeroSection from "../../components/hero/HeroSection";
 import ProductList from "../../components/productList/ProductList";
 import HeaderContainer from "../../containers/HeaderContainer";
-import ProductPage from "../product/ProductPage";
 
 const Home = () => {
   return (
@@ -13,10 +12,9 @@ const Home = () => {
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      {/* <HeroSection />
+      <HeroSection />
       <Categories />
-      <ProductList /> */}
-      <ProductPage />
+      <ProductList />
       <FooterSection />
     </>
   );

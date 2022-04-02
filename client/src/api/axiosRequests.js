@@ -21,3 +21,12 @@ export const getCatProductsAPI = async (cat) => {
     throw err;
   }
 };
+
+export const getBestProductsAPI = async () => {
+  try {
+    const bestProds = await instance.get(`/custom/cheapest-five`);
+    return bestProds.data.products;
+  } catch (err) {
+    throw err;
+  }
+};
