@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Search from "../search/Search";
+
 //prettier-ignore
 import {
   Box,Typography,Badge
@@ -10,6 +12,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import Navbar from "../navbar/Navbar";
 
 const Header = () => {
+  const { cartItems } = useSelector((state) => state.cart);
   return (
     <Box className="flex flex-col items-center md:flex-row md:px-3">
       <Typography
@@ -26,7 +29,7 @@ const Header = () => {
           <Box className="flex w-8/12 md:w-2/12 justify-around items-center">
             <NavLink to={"/cart"}>
               <Badge
-                badgeContent={1}
+                badgeContent={cartItems.length !== 0 ? cartItems.length : 0}
                 sx={{
                   "& .MuiBadge-badge": {
                     color: "white",
