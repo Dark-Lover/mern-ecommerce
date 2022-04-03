@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 const ProductPage = () => {
   const { id } = useParams();
   return (
-    <main className="min-h-screen  flex flex-col ">
+    <div className="min-h-screen  flex flex-col ">
       <HeaderContainer>
         <Header />
       </HeaderContainer>
@@ -20,7 +20,7 @@ const ProductPage = () => {
         <ProductInfos product={id} />
       </Container>
       <FooterSection />
-    </main>
+    </div>
   );
 };
 

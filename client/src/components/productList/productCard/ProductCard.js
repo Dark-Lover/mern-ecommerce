@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "./../../../api/cartFeatures";
 //prettier-ignore
 import {
   Grid,Card,CardContent,CardMedia,CardActions,Typography,Button,
 } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: "#7368b6",
+      contrastText: "#fff",
+    },
+    primary: {
+      main: "#7368b6",
+    },
+  },
+});
+
 const ProductCard = ({ prod, isBest }) => {
+  const dispatch = useDispatch();
+  const [checked, setChecked] = useState(false);
   return (
     <Grid item xs={12} sm={6} md={4} className="flex justify-center">
       <Card sx={{ maxWidth: 345 }} className=" flex flex-col ">
@@ -27,20 +44,34 @@ const ProductCard = ({ prod, isBest }) => {
             </Typography>
           </CardContent>
           <CardActions className="justify-center ">
-            <Button size="small" color="error">
-              <Link
-                to={
-                  !isBest
-                    ? `product/${prod._id}`
-                    : `${prod.category}/product/${prod._id}`
-                }
+            <ThemeProvider theme={theme}>
+              <Button size="small" color="primary" variant="outlined">
+                <Link
+                  to={
+                    !isBest
+                      ? `product/${prod._id}`
+                      : `${prod.category}/product/${prod._id}`
+                  }
+                >
+                  Details
+                </Link>
+              </Button>
+            </ThemeProvider>
+
+            {/* <ThemeProvider theme={theme}>
+              <Button
+                size="small"
+                endIcon={<AddShoppingCartIcon />}
+                onClick={() => {
+                  dispatch(ADD_TO_CART(prod));
+                  setChecked(true);
+                }}
+                variant={checked ? "contained" : "outlined"}
+                color={checked ? "neutral" : "primary"}
               >
-                Details
-              </Link>
-            </Button>
-            <Button size="small" endIcon={<AddShoppingCartIcon />}>
-              Add to cart
-            </Button>
+                {checked ? "In Cart" : "Add to cart"}
+              </Button>
+            </ThemeProvider> */}
           </CardActions>
         </div>
       </Card>
