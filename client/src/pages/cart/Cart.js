@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import FooterSection from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import ProductInfos from "../../components/productDetails/ProductInfos";
 import HeaderContainer from "../../containers/HeaderContainer";
 import { useSelector } from "react-redux";
+import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   return (
@@ -12,10 +12,8 @@ const Cart = () => {
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <Container className="py-4 flex justify-center flex-grow ">
-        <Typography variant="h6" component="h1" className="text-primary">
-          Your Order
-        </Typography>
+      <Container className="py-4 flex justify-center flex-grow bg-primary_light ">
+        <CheckoutForm />
       </Container>
       <FooterSection />
     </div>
