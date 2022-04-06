@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 //prettier-ignore
 import {
-  FormControlLabel,FormControl,FormLabel,Grid,Paper,Radio,RadioGroup,Typography,
+  Grid,Paper,Typography,Box
 } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
@@ -9,7 +9,8 @@ import InputControl from "../../controls/InputControl";
 import { useForm, CustomForm } from "../useForm";
 import RadioGroupCtrl from "../../controls/RadioGroupCtrl";
 import SelectCtrl from "../../controls/SelectCtrl";
-
+import CartItem from "./cartItem/CartItem";
+import { useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 16,
@@ -20,13 +21,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const initialFieldValues = {
-  fullName: "",
+  firstName: "",
+  lastName: "",
   email: "",
   mobile: "",
   gender: "female",
   city: "",
   adress: "",
   payment: "",
+  cardNumber: "",
+  cvv: "",
 };
 
 const genderItems = [
@@ -42,23 +46,39 @@ const paymentOptions = [
 const CheckoutForm = () => {
   const classes = useStyles();
   const { values, handleInput } = useForm(initialFieldValues);
+  const { cartItems } = useSelector((state) => state.cart);
   return (
-    <Paper>
+    <Box>
       <Typography
         variant="h6"
         component="h1"
         className="text-primary  text-center "
       >
-        Contact Informations
+        Checkout
       </Typography>
-      <CustomForm>
-        <Grid container className={classes.root}>
-          <Grid item xs={12} sm={6} className="px-2">
+      <Grid container className={classes.root}>
+        <Grid item xs={12} sm={6} className="px-2">
+          <Typography
+            variant="h6"
+            component="h1"
+            className="text-textTest  text-center "
+          >
+            Contact Form
+          </Typography>
+          <CustomForm>
             <InputControl
-              label="Full Name"
-              name="fullName"
-              value={values.fullName}
+              label="First Name"
+              name="firstName"
+              value={values.firstName}
               onChange={handleInput}
+              className="w-1/2 pr-2"
+            />
+            <InputControl
+              label="Last Name"
+              name="lastName"
+              value={values.lastName}
+              onChange={handleInput}
+              className="w-1/2"
             />
             <InputControl
               label="Email"
@@ -71,12 +91,7 @@ const CheckoutForm = () => {
               name="mobile"
               value={values.mobile}
               onChange={handleInput}
-            />
-            <InputControl
-              label="City"
-              name="city"
-              value={values.city}
-              onChange={handleInput}
+              className="w-1/2"
             />
             <InputControl
               label="Adress"
@@ -84,8 +99,13 @@ const CheckoutForm = () => {
               value={values.adress}
               onChange={handleInput}
             />
-          </Grid>
-          <Grid item xs={12} sm={6} className="px-2">
+            <InputControl
+              label="City"
+              name="city"
+              value={values.city}
+              onChange={handleInput}
+              className="w-1/2"
+            />
             <RadioGroupCtrl
               name="gender"
               value={values.gender}
@@ -100,10 +120,43 @@ const CheckoutForm = () => {
               onChange={handleInput}
               options={paymentOptions}
             />
-          </Grid>
+            {values.payment === "Smart Card" ? (
+              <>
+                <InputControl
+                  label="Card Number"
+                  name="cardnumber"
+                  value={values.cardNumber}
+                  onChange={handleInput}
+                />
+                <InputControl
+                  label="Cvv"
+                  name="cvv"
+                  value={values.cvv}
+                  onChange={handleInput}
+                  type="password"
+                />
+              </>
+            ) : (
+              ""
+            )}
+          </CustomForm>
         </Grid>
-      </CustomForm>
-    </Paper>
+        <Grid item xs={12} sm={6} className="px-2">
+          <Typography
+            variant="h6"
+            component="h1"
+            className="text-textTest  text-center "
+          >
+            Orders
+          </Typography>
+          <Box className="flex flex-col">
+            {cartItems.length !== 0
+              ? cartItems.map((item) => <CartItem item={item} key={item._id} />)
+              : "Cart EMPTY"}
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
