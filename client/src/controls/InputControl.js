@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
 const InputControl = (props) => {
-  const { name, value, label, onChange } = props;
+  const { name, value, label, onChange, ...others } = props;
   return (
     <TextField
       size="small"
@@ -11,6 +11,7 @@ const InputControl = (props) => {
       label={label || "test Field"}
       onChange={onChange}
       autoComplete="off"
+      {...others}
     />
   );
 };

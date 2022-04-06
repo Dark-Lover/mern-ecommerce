@@ -12,7 +12,7 @@ const Cart = () => {
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <Container className="py-4 flex justify-center flex-grow bg-primary_light ">
+      <Container className="py-4 flex justify-center flex-grow  ">
         <CheckoutForm />
       </Container>
       <FooterSection />
