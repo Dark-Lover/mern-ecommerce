@@ -5,9 +5,10 @@ import {
 } from "@mui/material";
 import ProductCard from "./productCard/ProductCard";
 import { useSelector } from "react-redux";
+import loading from "./../../assets/loading.gif";
 
 const ProductList = ({ cat }) => {
-  const { catData } = useSelector((state) => state.products);
+  let { catData } = useSelector((state) => state.products);
   const { bestProd } = useSelector((state) => state.products);
   console.log("Here is the cat data: ", catData);
   return (
@@ -21,17 +22,15 @@ const ProductList = ({ cat }) => {
           {cat ? `${cat} Articles` : "Cheapest Offers"}
         </Typography>
         <Grid container spacing={2} className="justify-center">
-          {catData.length !== 0 && cat
-            ? catData.map((prod) => <ProductCard prod={prod} key={prod._id} />)
-            : bestProd.length !== 0
-            ? bestProd.map((prod) => (
-                <ProductCard prod={prod} key={prod._id} isBest={true} />
-              ))
-            : "Loading"}
-
-          {/* <ProductCard />
-          <ProductCard />
-          <ProductCard /> */}
+          {catData.length !== 0 && cat ? (
+            catData.map((prod) => <ProductCard prod={prod} key={prod._id} />)
+          ) : bestProd.length !== 0 ? (
+            bestProd.map((prod) => (
+              <ProductCard prod={prod} key={prod._id} isBest={true} />
+            ))
+          ) : (
+            <img src={loading} alt="Loading" className="my-12" />
+          )}
         </Grid>
       </Container>
     </section>

@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  FormControl,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const SelectCtrl = (props) => {
   const { name, label, value, onChange, options } = props;
   return (
-    <FormControl variant="outlined" size="small">
+    <FormControl variant="outlined" size="small" required>
       <InputLabel>{label}</InputLabel>
       <Select label={label} name={name} value={value} onChange={onChange}>
         <MenuItem value="">
