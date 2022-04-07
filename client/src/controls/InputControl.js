@@ -12,6 +12,7 @@ const InputControl = (props) => {
       onChange={onChange}
       autoComplete="off"
       {...others}
+      required
     />
   );
 };

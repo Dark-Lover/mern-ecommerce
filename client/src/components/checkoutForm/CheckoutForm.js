@@ -1,7 +1,7 @@
 import React from "react";
 //prettier-ignore
 import {
-  Grid,Paper,Typography,Box
+  Grid,Typography,Box,Button, Alert
 } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
@@ -17,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFormControl-root": {
       marginBottom: 8,
       width: "100%",
+    },
+  },
+  validate: {
+    marginTop: 16,
+    backgroundColor: "#7368b6",
+    "&:hover": {
+      backgroundColor: "#8b81ca",
     },
   },
 }));
@@ -47,6 +54,8 @@ const CheckoutForm = () => {
   const classes = useStyles();
   const { values, handleInput } = useForm(initialFieldValues);
   const { cartItems } = useSelector((state) => state.cart);
+  const tot = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+  console.log(tot);
   return (
     <Box>
       <Typography
@@ -150,10 +159,31 @@ const CheckoutForm = () => {
             Orders
           </Typography>
           <Box className="flex flex-col">
-            {cartItems.length !== 0
-              ? cartItems.map((item) => <CartItem item={item} key={item._id} />)
-              : "Cart EMPTY"}
+            {cartItems.length !== 0 ? (
+              cartItems.map((item) => <CartItem item={item} key={item._id} />)
+            ) : (
+              <Alert variant="outlined" severity="error" className="my-4">
+                Your Cart is Empty !
+              </Alert>
+            )}
           </Box>
+          <Box className="flex justify-around">
+            <Typography
+              variant="h6"
+              component="h1"
+              className="text-textGreen  text-center "
+            >
+              Total
+            </Typography>
+            <Box className="w-20 h-10 grow-0  bg-bgTest rounded-lg flex items-center justify-center text-neutral-500 font-bold text-secondary_light px-4">
+              $<span className=" font-bold text-textTest "> {tot}</span>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={12} className="px-2 flex justify-center">
+          <Button variant="contained" className={classes.validate}>
+            Validation
+          </Button>
         </Grid>
       </Grid>
     </Box>

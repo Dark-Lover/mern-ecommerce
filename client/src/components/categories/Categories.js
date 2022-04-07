@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
+import loading from "./../../assets/loading.gif";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -46,13 +46,15 @@ const Categories = () => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {catArr.length !== 0
-          ? catArr.map((el) => (
-              <SwiperSlide className="flex justify-center" key={el}>
-                <Category cat={el} />
-              </SwiperSlide>
-            ))
-          : "Loading"}
+        {catArr.length !== 0 ? (
+          catArr.map((el) => (
+            <SwiperSlide className="flex justify-center" key={el}>
+              <Category cat={el} />
+            </SwiperSlide>
+          ))
+        ) : (
+          <img src={loading} alt="Loading" className="my-12 m-auto" />
+        )}
       </Swiper>
     </Container>
   );
