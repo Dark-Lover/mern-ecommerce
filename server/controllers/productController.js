@@ -1,6 +1,6 @@
 const Product = require("./../model/productModel");
 const apiFeatures = require("./../utils/Product");
-
+const catchAsync = require("./../utils/catchAsync");
 // Custom middleware
 
 exports.aliasCheapestFive = async (req, res, next) => {
@@ -29,90 +29,62 @@ exports.specifyCategory = async (req, res, next) => {
     case "jewelery":
       cat = "jewelery";
       break;
-    // default:
-    //   cat = "men's clothing";
-    //   break;
+    default:
+      cat = "men's clothing";
+      break;
   }
   console.log("New Cat: ", cat);
   req.query = { category: cat };
   next();
 };
 
-exports.getAllProducts = async (req, res) => {
-  try {
-    //! Using APIFeatures
-    console.log("##### Inside Get all Products #####");
-    console.log(req.query);
-    const features = new apiFeatures(Product.find(), req.query)
-      .filter()
-      .sort()
-      .fields()
-      .paginate();
-    const data = await features.query;
-    res.status(200).json({
-      status: "Success",
-      count: data.length,
-      products: data,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "Success",
-      errorLog: err,
-    });
-  }
-};
+exports.getAllProducts = catchAsync(async (req, res, next) => {
+  //   //! Using APIFeatures
+  console.log("##### Inside Get all Products #####");
+  console.log(req.query);
+  const features = new apiFeatures(Product.find(), req.query)
+    .filter()
+    .sort()
+    .fields()
+    .paginate();
+  const data = await features.query;
+  res.status(200).json({
+    status: "Success",
+    count: data.length,
+    products: data,
+  });
+});
 
 // Add Product
-exports.addProduct = async (req, res) => {
-  try {
-    const data = req.body;
-    await Product.create(data);
-    res.status(201).json({
-      status: "Add Success",
-      product: data,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "Add Fail",
-      errorLog: err,
-    });
-  }
-};
+exports.addProduct = catchAsync(async (req, res, next) => {
+  const data = req.body;
+  await Product.create(data);
+  res.status(201).json({
+    status: "Add Success",
+    product: data,
+  });
+});
 
 // Delete Product
-exports.deleteProduct = async (req, res) => {
-  try {
-    console.log(`We are Deleting: ${req.params.id}`);
-    const { id } = req.params;
-    await Product.findByIdAndDelete(id);
-    res.status(201).json({
-      status: "Delete Success",
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "Delete Fail",
-      errorLog: err.message,
-    });
-  }
-};
+exports.deleteProduct = catchAsync(async (req, res, next) => {
+  console.log(`We are Deleting: ${req.params.id}`);
+  const { id } = req.params;
+  await Product.findByIdAndDelete(id);
+  res.status(201).json({
+    status: "Delete Success",
+  });
+});
 
 // Update Product
-exports.updateProduct = async (req, res) => {
-  try {
-    console.log(`We are Updating: ${req.params.id}`);
-    const { id } = req.params;
-    const newData = req.body;
-    const updatedProduct = await Product.findOneAndUpdate(id, newData, {
-      new: true,
-    });
-    res.status(201).json({
-      status: "Update Success",
-      updatedProduct,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "Update Fail",
-      errorLog: err.message,
-    });
-  }
-};
+exports.updateProduct = catchAsync(async (req, res, next) => {
+  console.log(`We are Updating: ${req.params.id}`);
+  const { id } = req.params;
+  const newData = req.body;
+  const updatedProduct = await Product.findOneAndUpdate(id, newData, {
+    new: true,
+  });
+  res.status(201).json({
+    status: "Update Success",
+    updatedProduct,
+  });
+});

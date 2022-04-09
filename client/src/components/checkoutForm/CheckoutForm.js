@@ -55,7 +55,7 @@ const CheckoutForm = () => {
   const { values, handleInput } = useForm(initialFieldValues);
   const { cartItems } = useSelector((state) => state.cart);
   const tot = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
-  console.log(tot);
+
   return (
     <Box>
       <Typography

@@ -10,7 +10,7 @@ import loading from "./../../assets/loading.gif";
 const ProductList = ({ cat }) => {
   let { catData } = useSelector((state) => state.products);
   const { bestProd } = useSelector((state) => state.products);
-  console.log("Here is the cat data: ", catData);
+
   return (
     <section className="py-12 px-4 ">
       <Container>
@@ -24,7 +24,7 @@ const ProductList = ({ cat }) => {
         <Grid container spacing={2} className="justify-center">
           {catData.length !== 0 && cat ? (
             catData.map((prod) => <ProductCard prod={prod} key={prod._id} />)
-          ) : bestProd.length !== 0 ? (
+          ) : bestProd.length !== 0 && cat !== "women" ? (
             bestProd.map((prod) => (
               <ProductCard prod={prod} key={prod._id} isBest={true} />
             ))

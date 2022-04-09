@@ -20,6 +20,7 @@ const theme = createTheme({
 });
 
 const ProductInfos = ({ product }) => {
+  console.log("Whats Wrong: ", product);
   const dispatch = useDispatch();
   // const [checked, setChecked] = useState(false);
   const [updateQty, setUpdateQty] = useState(false);

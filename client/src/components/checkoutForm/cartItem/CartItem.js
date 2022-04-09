@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CartItem = ({ item }) => {
-  console.log("Here is our cart item", item);
   const classes = useStyles();
   const dispatch = useDispatch();
 
