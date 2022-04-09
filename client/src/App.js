@@ -21,14 +21,12 @@ const App = () => {
     if (needFetch) {
       getAllProductsAPI()
         .then((res) => {
-          console.log("we are fetching all");
           dispatch(FETCH_ALL_PRODUCTS(res));
           dispatch(TURNOFF());
         })
         .catch((err) => console.log(err));
       getBestProductsAPI()
         .then((res) => {
-          console.log("we are fetching best");
           dispatch(FETCH_BEST(res));
         })
         .catch((err) => console.log("Error in fetching best Prod", err));

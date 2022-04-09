@@ -5,26 +5,24 @@ import Header from "../../components/header/Header";
 import ProductList from "../../components/productList/ProductList";
 import HeaderContainer from "../../containers/HeaderContainer";
 import { getCatProductsAPI } from "../../api/axiosRequests";
-import { useDispatch, useSelector } from "react-redux";
-import { FETCH_CAT_PRODUCTS, TURNOFFCAT } from "../../api/productsFeatures";
+import { useDispatch } from "react-redux";
+import { FETCH_CAT_PRODUCTS } from "../../api/productsFeatures";
 const CategoryPage = () => {
   const category = useParams();
-  const { catData } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("WE ARE FETCHING CAT");
-
     getCatProductsAPI(category.category).then((res) => {
       dispatch(FETCH_CAT_PRODUCTS(res));
-      console.log("new cat data: ", res);
     });
   }, [category.category]);
   return (
-    <section>
+    <section className="min-h-screen flex flex-col ">
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <ProductList cat={category.category} />
+      <div className=" flex-grow ">
+        <ProductList cat={category.category} />
+      </div>
       <FooterSection />
     </section>
   );

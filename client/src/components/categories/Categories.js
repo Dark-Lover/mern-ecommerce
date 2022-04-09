@@ -26,7 +26,7 @@ const Categories = () => {
   const { data } = useSelector((state) => state.products);
   const uniqueCat = new Set(data.map((el) => el.category));
   const catArr = [...uniqueCat];
-  console.log(catArr);
+
   return (
     <Container className="mt-12">
       <Typography
@@ -43,8 +43,8 @@ const Categories = () => {
         spaceBetween={2}
         slidesPerView={downToSm ? 1 : upToMd ? 3 : 2}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         {catArr.length !== 0 ? (
           catArr.map((el) => (
