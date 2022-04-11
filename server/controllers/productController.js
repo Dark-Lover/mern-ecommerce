@@ -38,8 +38,9 @@ exports.specifyCategory = async (req, res, next) => {
   next();
 };
 
+// Get All products
 exports.getAllProducts = catchAsync(async (req, res, next) => {
-  //   //! Using APIFeatures
+  //! Using APIFeatures
   console.log("##### Inside Get all Products #####");
   console.log(req.query);
   const features = new apiFeatures(Product.find(), req.query)
