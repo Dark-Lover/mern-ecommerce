@@ -2,6 +2,7 @@ const productRoute = require("express").Router();
 const productsCtr = require("./../controllers/productController");
 
 // Get All Products
+// productRoute.get("/products", productsCtr.getAllProducts);
 productRoute.get("/products", productsCtr.getAllProducts);
 productRoute.get(
   "/products/:cat",
