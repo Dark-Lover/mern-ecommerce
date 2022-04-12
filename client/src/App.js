@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Main from "./containers/Main";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import CategoryPage from "./pages/category/CategoryPage";
@@ -13,6 +12,8 @@ import {
 import { getAllProductsAPI, getBestProductsAPI } from "./api/axiosRequests";
 import { Button } from "@mui/material";
 import ProductPage from "./pages/product/ProductPage";
+import HeaderContainer from "./containers/HeaderContainer";
+import Header from "./components/header/Header";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,28 +35,17 @@ const App = () => {
   }, [needFetch]);
   return (
     <>
-      <Main className="relative">
-        {/* <HeaderContainer>
+      <div className="relative">
+        <HeaderContainer>
           <Header />
         </HeaderContainer>
-        <HeroSection />
-        <Categories />
-        <ProductList cat="Home" />
-        <FooterSection /> */}
-        {/* <Button
-          variant="outlined"
-          onClick={() => dispatch(TURNOFF())}
-          justify="center"
-        >
-          fetch
-        </Button> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path=":category" element={<CategoryPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path=":category/product/:id" element={<ProductPage />} />
         </Routes>
-      </Main>
+      </div>
     </>
   );
 };
